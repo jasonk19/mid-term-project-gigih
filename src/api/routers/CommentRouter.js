@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', getCommentsController);
 
 router.post(
-  '/post',
+  '/',
   verifyToken,
   addCommentController
 )
