@@ -1,8 +1,6 @@
 import jwt from 'jsonwebtoken';
 
 export const verifyToken = async (req, res, next) => {
-  console.log(req.headers);
-
   const { authorization } = req.headers;
 
   if (!authorization) {
@@ -10,21 +8,30 @@ export const verifyToken = async (req, res, next) => {
     res.json({
       message: 'Not authorized'
     })
+    return;
   }
 
   const bearer = authorization.split(' ');
   const bearerToken = bearer[1];
   
-  const account = jwt.verify(bearerToken);
-
-  if (!account) {
+  try {
+    const account = jwt.verify(bearerToken, process.env.PRIVATE_KEY);
+  
+    if (!account) {
+      res.status(401);
+      res.json({
+        message: 'Not authorized'
+      })
+      return;
+    }
+  
+    req.account = account;
+  
+    return next();
+  } catch (error) {
     res.status(401);
     res.json({
-      message: 'Not authorized'
+      message: error.message
     })
   }
-
-  req.account = account;
-
-  return next();
 }
