@@ -1,7 +1,7 @@
-import { findProductsByVideoId } from "../../../infrastructure/database/product/ProductDatabase"
+import productDatabase from "../../../infrastructure/database/product/ProductDatabase"
 
-export async function getProducts(videoId) {
-  const products = await findProductsByVideoId(videoId);
+export async function getProductsUseCase(videoId) {
+  const products = await productDatabase.findProductsByVideoId(videoId);
 
   return products
 }

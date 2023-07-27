@@ -1,7 +1,7 @@
-import { findVideoThumbnailList } from "../../../infrastructure/database/videoThumbnail/VideoThumbnailDatabase";
+import videoThumbnailDatabase from '../../../infrastructure/database/videoThumbnail/VideoThumbnailDatabase';
 
-export async function getVideoThumbnailList() {
-  const videoThumbnailList = await findVideoThumbnailList();
+export async function getVideoThumbnailListUseCase() {
+  const videoThumbnailList = await videoThumbnailDatabase.findVideoThumbnailList();
 
   return videoThumbnailList;
 }

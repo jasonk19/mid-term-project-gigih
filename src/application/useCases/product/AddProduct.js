@@ -1,10 +1,10 @@
-import { addProductByVideoId } from "../../../infrastructure/database/product/ProductDatabase";
+import productDatabase from "../../../infrastructure/database/product/ProductDatabase";
 
-export async function addProduct(props) {
+export async function addProductUseCase(props) {
   const { videoId, data } = props;
   const { title, price, link } = data;
 
-  const product = await addProductByVideoId(videoId, {
+  const product = await productDatabase.addProductByVideoId(videoId, {
     title,
     price,
     link

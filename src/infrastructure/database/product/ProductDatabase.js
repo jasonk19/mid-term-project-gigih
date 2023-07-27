@@ -1,20 +1,26 @@
 import { ProductCollection } from "./ProductSchema";
 
-export async function findProductsByVideoId(videoId) {
-  const products = await ProductCollection.find({
-    videoId
-  })
-
-  return products
+class ProductDatabase {
+  async findProductsByVideoId(videoId) {
+    const products = await ProductCollection.find({
+      videoId
+    })
+  
+    return products
+  }
+  
+  async addProductByVideoId(videoId, { title, price, link }) {
+    const product = await ProductCollection.create({
+      title,
+      price,
+      link,
+      videoId
+    })
+  
+    return product
+  }
 }
 
-export async function addProductByVideoId(videoId, { title, price, link }) {
-  const product = await ProductCollection.create({
-    title,
-    price,
-    link,
-    videoId
-  })
+const productDatabase = new ProductDatabase();
 
-  return product
-}
+export default productDatabase;

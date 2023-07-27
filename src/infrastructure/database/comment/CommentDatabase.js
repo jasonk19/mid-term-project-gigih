@@ -1,33 +1,39 @@
 import { Types } from 'mongoose';
 import { CommentCollection } from './CommentSchema';
 
-export async function findCommentsByVideoId(videoId) {
-  const comments = await CommentCollection.aggregate([
-    {
-      $match: {
-        videoId
+class CommentDatabase {
+  async findCommentsByVideoId(videoId) {
+    const comments = await CommentCollection.aggregate([
+      {
+        $match: {
+          videoId
+        }
+      },
+      {
+        $lookup: {
+          from: 'accounts',
+          localField: 'accountId',
+          foreignField: '_id',
+          as: 'account'
+        }
       }
-    },
-    {
-      $lookup: {
-        from: 'accounts',
-        localField: 'accountId',
-        foreignField: '_id',
-        as: 'account'
-      }
-    }
-  ])
-
-  return comments
+    ])
+  
+    return comments
+  }
+  
+  async addComment({ accountId, videoId, comment }) {
+    const comment = await CommentCollection.create({
+      accountId: new Types.ObjectId(accountId),
+      videoId: new Types.ObjectId(videoId),
+      timestamp: new Date(),
+      comment
+    })
+  
+    return comment;
+  }
 }
 
-export async function addComment({ accountId, videoId, comment }) {
-  const comment = await CommentCollection.create({
-    accountId: new Types.ObjectId(accountId),
-    videoId: new Types.ObjectId(videoId),
-    timestamp: new Date(),
-    comment
-  })
+const commentDatabase = new CommentDatabase();
 
-  return comment;
-}
+export default commentDatabase;
