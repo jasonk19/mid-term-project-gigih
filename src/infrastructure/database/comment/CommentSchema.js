@@ -13,6 +13,11 @@ const commentSchema = new mongoose.Schema({
   timestamp: {
     type: Date,
     required: true,
+  },
+  videoId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'VideoThumbnail'
   }
 })
 
