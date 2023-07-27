@@ -6,7 +6,7 @@ class CommentDatabase {
     const comments = await CommentCollection.aggregate([
       {
         $match: {
-          videoId
+          videoId: new Types.ObjectId(videoId)
         }
       },
       {
@@ -15,6 +15,27 @@ class CommentDatabase {
           localField: 'accountId',
           foreignField: '_id',
           as: 'account'
+        }
+      },
+      {
+        $unwind: '$account'
+      },
+      {
+        $project: {
+          _id: 1,
+          comment: 1,
+          timestamp: 1,
+          videoId: 1,
+          account: {
+            _id: 1,
+            name: 1,
+            username: 1
+          }
+        }
+      },
+      {
+        $sort: {
+          timestamp: -1
         }
       }
     ])
