@@ -17,7 +17,7 @@ request -> middleware -> controller -> useCase -> database -> response
 
 ## API Contract
 ### Account
-- User Object
+- Account Object
 ```
 {
   _id: objectId,
@@ -29,10 +29,33 @@ request -> middleware -> controller -> useCase -> database -> response
 ```
 
 ### POST /account/register
+---
+  Register account
+* **URL Params**  
+  None
+* **Data Params**  
+  ```
+  {
+    name: <string>,
+    username: <string>,
+    password: <string>
+  }
+  ```
+* **Headers**  
+  Content-Type: application/json  
+* **Success Response:**  
+* **Code:** 200  
+  **Content:**  
+```
+{
+  message: <string>
+  token: <string>
+}
+```
 
 ### POST /account/login
 ---
-  Login user
+  Login account
 * **URL Params**  
   None
 * **Data Params**  
@@ -180,6 +203,7 @@ request -> middleware -> controller -> useCase -> database -> response
   ```
 * **Headers**  
   Content-Type: application/json  
+  Authorization: Bearer `<JWT Token>`
 * **Success Response:**  
 * **Code:** 200  
   **Content:**  
