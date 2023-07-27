@@ -1,8 +1,8 @@
 import express from 'express';
-import { getVideoThumbnailListController } from '../controllers/videoThumbnail/GetVideoThumbnailListController';
+import { getVideoThumbnailListController } from '../controllers/videoThumbnail/GetVideoThumbnailListController.js';
 
 const router = express.Router();
 
 router.get('/', getVideoThumbnailListController);
 
-export default router;
+export { router as videoThumbnailRouter }

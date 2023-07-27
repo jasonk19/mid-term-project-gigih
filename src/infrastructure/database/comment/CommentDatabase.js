@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import { CommentCollection } from './CommentSchema';
+import { CommentCollection } from './CommentSchema.js';
 
 class CommentDatabase {
   async findCommentsByVideoId(videoId) {
@@ -23,14 +23,14 @@ class CommentDatabase {
   }
   
   async addComment({ accountId, videoId, comment }) {
-    const comment = await CommentCollection.create({
+    const newComment = await CommentCollection.create({
       accountId: new Types.ObjectId(accountId),
       videoId: new Types.ObjectId(videoId),
       timestamp: new Date(),
       comment
     })
   
-    return comment;
+    return newComment;
   }
 }
 

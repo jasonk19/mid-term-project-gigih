@@ -1,6 +1,6 @@
 import express from 'express';
-import { registerAccountController } from '../controllers/account/RegisterAccountController';
-import { loginAccountController } from '../controllers/account/LoginAccountController';
+import { registerAccountController } from '../controllers/account/RegisterAccountController.js';
+import { loginAccountController } from '../controllers/account/LoginAccountController.js';
 
 const router = express.Router();
 
@@ -8,4 +8,4 @@ router.post('/register', registerAccountController);
 
 router.post('/login', loginAccountController);
 
-export default router
+export { router as accountRouter }

@@ -1,4 +1,4 @@
-import { getAccountUseCase } from "../../../application/useCases/account/GetAccount";
+import { getAccountUseCase } from "../../../application/useCases/account/GetAccount.js";
 
 export const loginAccountController = async (req, res) => {
   try {
@@ -8,7 +8,7 @@ export const loginAccountController = async (req, res) => {
   
     res.status(200);
     res.json({
-      message: 'Login successfull',
+      message: 'Login successful',
       token
     });
   } catch (error) {

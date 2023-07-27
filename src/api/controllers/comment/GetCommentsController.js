@@ -1,4 +1,4 @@
-import { getCommentsUseCase } from "../../../application/useCases/comment/GetComments";
+import { getCommentsUseCase } from "../../../application/useCases/comment/GetComments.js";
 
 export const getCommentsController = async (req, res) => {
   try {

@@ -1,4 +1,4 @@
-import { ProductCollection } from "./ProductSchema";
+import { ProductCollection } from "./ProductSchema.js";
 
 class ProductDatabase {
   async findProductsByVideoId(videoId) {

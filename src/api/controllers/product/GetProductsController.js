@@ -1,4 +1,4 @@
-import { getProductsUseCase } from "../../../application/useCases/product/GetProducts";
+import { getProductsUseCase } from "../../../application/useCases/product/GetProducts.js";
 
 export const getProductsController = async (req, res) => {
   try {

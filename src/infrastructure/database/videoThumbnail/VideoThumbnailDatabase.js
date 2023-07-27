@@ -1,4 +1,4 @@
-import { VideoThumbnailCollection } from "./VideoThumbnailSchema";
+import { VideoThumbnailCollection } from "./VideoThumbnailSchema.js";
 
 class VideoThumbnailDatabase {
   async findVideoThumbnailList() {

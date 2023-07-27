@@ -1,4 +1,4 @@
-import productDatabase from "../../../infrastructure/database/product/ProductDatabase";
+import productDatabase from "../../../infrastructure/database/product/ProductDatabase.js";
 
 export async function addProductUseCase(props) {
   const { videoId, data } = props;

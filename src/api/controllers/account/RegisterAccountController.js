@@ -1,4 +1,4 @@
-import { registerAccountUseCase } from "../../../application/useCases/account/RegisterAccount";
+import { registerAccountUseCase } from "../../../application/useCases/account/RegisterAccount.js";
 
 export const registerAccountController = async (req, res) => {
   try {

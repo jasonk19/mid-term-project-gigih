@@ -1,21 +1,24 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
+import bodyparser from 'body-parser';
 
-import accountRouter from './api/routers/AccountRouter';
-import productRouter from './api/routers/ProductRouter';
-import commentRouter from './api/routers/CommentRouter';
-import videoThumbnailRouter from './api/routers/VideoThumbnailRouter';
-
-dotenv.config();
+import { accountRouter } from './api/routers/AccountRouter.js';
+import { productRouter } from './api/routers/ProductRouter.js';
+import { commentRouter } from './api/routers/CommentRouter.js';
+import { videoThumbnailRouter } from './api/routers/VideoThumbnailRouter.js';
 
 async function main() {
+  dotenv.config();
   // Connect Database
   await mongoose.connect(process.env.DATABASE_URL);
 
   const app = express();
   const port = process.env.PORT || 5000;
   
+  app.use(bodyparser.json())
+  app.use(bodyparser.urlencoded({ extended: false }))
+
   app.use('/account', accountRouter);
   app.use('/product', productRouter);
   app.use('/comment', commentRouter);

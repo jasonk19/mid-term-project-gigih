@@ -1,4 +1,4 @@
-import { getVideoThumbnailListUseCase } from "../../../application/useCases/videoThumbnail/GetVideoThumbnailList"
+import { getVideoThumbnailListUseCase } from "../../../application/useCases/videoThumbnail/GetVideoThumbnailList.js"
 
 export const getVideoThumbnailListController = async (req, res) => {
   try {

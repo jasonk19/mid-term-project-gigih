@@ -1,5 +1,6 @@
+import jwt from 'jsonwebtoken';
 import bcrypt from 'bcrypt';
-import accountDatabase from "../../../infrastructure/database/account/AccountDatabase";
+import accountDatabase from "../../../infrastructure/database/account/AccountDatabase.js";
 
 export async function getAccountUseCase(username, password) {
   const account = await accountDatabase.findAccount(username);
@@ -24,7 +25,7 @@ export async function getAccountUseCase(username, password) {
     _id: account._id,
     name: account.name,
     username: account.username
-  });
+  }, process.env.PRIVATE_KEY);
 
   return token;
 }

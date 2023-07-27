@@ -1,5 +1,5 @@
 import bcrypt from 'bcrypt';
-import { AccountCollection } from './AccountSchema';
+import { AccountCollection } from './AccountSchema.js';
 
 class AccountDatabase {
   async createAccount({name, username, hashedPassword}) {
