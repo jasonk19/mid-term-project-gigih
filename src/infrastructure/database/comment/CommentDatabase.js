@@ -2,9 +2,21 @@ import { Types } from 'mongoose';
 import { CommentCollection } from './CommentSchema';
 
 export async function findCommentsByVideoId(videoId) {
-  const comments = await CommentCollection.find({
-    videoId
-  })
+  const comments = await CommentCollection.aggregate([
+    {
+      $match: {
+        videoId
+      }
+    },
+    {
+      $lookup: {
+        from: 'accounts',
+        localField: 'accountId',
+        foreignField: '_id',
+        as: 'account'
+      }
+    }
+  ])
 
   return comments
 }
