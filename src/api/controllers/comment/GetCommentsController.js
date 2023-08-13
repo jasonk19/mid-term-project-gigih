@@ -2,7 +2,7 @@ import { getCommentsUseCase } from "../../../application/useCases/comment/GetCom
 
 export const getCommentsController = async (req, res) => {
   try {
-    const { videoId } = req.body;
+    const { videoId } = req.params;
 
     const comments = await getCommentsUseCase(videoId);
   

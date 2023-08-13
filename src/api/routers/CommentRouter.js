@@ -5,10 +5,10 @@ import { addCommentController } from '../controllers/comment/AddCommentControlle
 
 const router = express.Router();
 
-router.get('/', getCommentsController);
+router.get('/:videoId', getCommentsController);
 
 router.post(
-  '/',
+  '/:videoId',
   verifyToken,
   addCommentController
 )

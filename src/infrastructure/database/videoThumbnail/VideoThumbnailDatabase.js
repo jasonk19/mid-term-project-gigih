@@ -6,6 +6,12 @@ class VideoThumbnailDatabase {
   
     return videoThumbnailList;
   }
+
+  async findVideoThumbnail(id) {
+    const videoThumbnail = await VideoThumbnailCollection.findById(id);
+
+    return videoThumbnail === null ? null : videoThumbnail;
+  }
 }
 
 const videoThumbnailDatabase = new VideoThumbnailDatabase();

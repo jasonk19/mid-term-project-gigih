@@ -3,7 +3,8 @@ import { addCommentUseCase } from "../../../application/useCases/comment/AddComm
 export const addCommentController = async (req, res) => {
   try {
     const accountId = req.account._id;
-    const { videoId, comment } = req.body;
+    const { videoId } = req.params;
+    const { comment } = req.body;
 
     await addCommentUseCase({
       accountId,

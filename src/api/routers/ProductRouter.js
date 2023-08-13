@@ -3,6 +3,6 @@ import { getProductsController } from '../controllers/product/GetProductsControl
 
 const router = express.Router();
 
-router.get('/', getProductsController);
+router.get('/:videoId', getProductsController);
 
 export { router as productRouter }

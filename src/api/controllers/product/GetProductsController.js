@@ -2,7 +2,7 @@ import { getProductsUseCase } from "../../../application/useCases/product/GetPro
 
 export const getProductsController = async (req, res) => {
   try {
-    const { videoId } = req.body;
+    const { videoId } = req.params;
 
     const products = await getProductsUseCase(videoId);
   
