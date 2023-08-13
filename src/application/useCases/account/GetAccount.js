@@ -25,7 +25,7 @@ export async function getAccountUseCase(username, password) {
     _id: account._id,
     name: account.name,
     username: account.username
-  }, process.env.PRIVATE_KEY);
+  }, process.env.PRIVATE_KEY, { expiresIn: 60 * 60 * 60 });
 
   return token;
 }
