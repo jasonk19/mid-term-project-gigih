@@ -19,6 +19,12 @@ class AccountDatabase {
   
     return account;
   }
+
+  async findAccountById(accountId) {
+    const account = await AccountCollection.findById(accountId).select('name username');
+    
+    return account;
+  }
 }
 
 const accountDatabase = new AccountDatabase();
