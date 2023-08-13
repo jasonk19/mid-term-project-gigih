@@ -6,6 +6,10 @@ const commentSchema = new mongoose.Schema({
     required: true,
     ref: 'Account'
   },
+  username: {
+    type: String,
+    required: true
+  },
   comment: {
     type: String,
     required: true,

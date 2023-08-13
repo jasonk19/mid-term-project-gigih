@@ -2,12 +2,13 @@ import { addCommentUseCase } from "../../../application/useCases/comment/AddComm
 
 export const addCommentController = async (req, res) => {
   try {
-    const accountId = req.account._id;
+    const { accountId, username } = req.account;
     const { videoId } = req.params;
     const { comment } = req.body;
 
-    await addCommentUseCase({
+    const newComment = await addCommentUseCase({
       accountId,
+      username,
       videoId,
       comment
     })
@@ -15,7 +16,8 @@ export const addCommentController = async (req, res) => {
     res.status(200);
     res.json({
       status: 'Success',
-      message: 'Comment added'
+      message: 'Comment added',
+      comment: newComment
     });
   } catch (error) {
     error.statusCode = error.statusCode || 500;
