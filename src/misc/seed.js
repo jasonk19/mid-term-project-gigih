@@ -18,7 +18,7 @@ async function seed() {
   })
   const videoThumbnailThree = await VideoThumbnailCollection.create({
     url: 'https://picsum.photos/id/3/200/320',
-    videoUrl: 'https://www.youtube.com/embed/5qap5aO4i9A'
+    videoUrl: 'https://www.youtube.com/embed/1fueZCTYkpA'
   })
   const videoThumbnailFour = await VideoThumbnailCollection.create({
     url: 'https://picsum.photos/id/4/200/320',
@@ -26,7 +26,7 @@ async function seed() {
   })
   const videoThumbnailFive = await VideoThumbnailCollection.create({
     url: 'https://picsum.photos/id/5/200/320',
-    videoUrl: 'https://www.youtube.com/embed/DWcJFNfaw9c'
+    videoUrl: 'https://www.youtube.com/embed/i43tkaTXtwI'
   })
 
   // Products Seed
